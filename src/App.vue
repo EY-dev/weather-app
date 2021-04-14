@@ -1,28 +1,70 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <settings/>
+    <main-info/>
+    <additional-info/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+import MainInfo from "@/components/MainInfo";
+import AdditionalInfo from "@/components/AdditionalInfo";
+import Settings from "@/components/Settings";
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Settings,
+    AdditionalInfo,
+    MainInfo
+  },
+  created() {
+    if (this.$workbox) {
+      this.$workbox.addEventListener("waiting", () => {
+        this.showUpdateUI = true;
+      });
+    }
+    this.$store.dispatch('initDevice', null);
+    this.$store.dispatch('getWeather');
+  },
+  methods:{
+    async accept() {
+      this.showUpdateUI = false;
+      await this.$workbox.messageSW({ type: "SKIP_WAITING" });
+    }
+  },
+  computed: {
+    device(){
+      return this.$store.getters.isMobile
+    }
   }
 }
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+body{
+  background-color: #498CEC;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box!important;
+  margin: 0;
+  padding: 0;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+
+@media only screen and (max-width: 800px){
+  body{
+    background-color: #7290B9;
+  }
+}
+@media only screen and (max-height: 725px) and (min-width: 401px){
+
 }
 </style>
