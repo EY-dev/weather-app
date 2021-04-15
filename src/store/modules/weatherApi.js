@@ -76,7 +76,6 @@ export default{
                     .finally(()=>{
                         const unit = (state.rootState.module1.unit === 'C') ? 'metric' : 'imperial';
                         const url = weather_url + weather_type.weather  + `?lat=${state.state.coordinates.lat}&lon=${state.state.coordinates.lon}&units=${unit}&lang=ru&appid=${appid}`;
-                        state.dispatch('setURL', url);
                         state.dispatch('getRequest', url);
                     })
             }
@@ -84,7 +83,6 @@ export default{
         getWeatherByCity: (state, city) => {
             const unit = (state.rootState.module1.unit === 'C') ? 'metric' : 'imperial';
             const url = weather_url + weather_type.weather  + `?q=${city}&units=${unit}&lang=ru&appid=${appid}`;
-            state.dispatch('setURL', url);
             state.dispatch('getRequest', url);
         },
         getWeather: (state) => {
@@ -94,7 +92,8 @@ export default{
             axios.get(url).then(resp => {
                 state.commit('SET_WEATHER', resp.data);
                 state.dispatch('setCity', resp.data.name);
-            });
+                state.dispatch('setURL', url);
+            }).catch(error => {console.log(error.response.data.message)});
         },
         setCity : (state, value) => {
             state.commit('SET_CITY', value);
