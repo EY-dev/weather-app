@@ -100,9 +100,7 @@ export default {
     font-style: normal;
     font-weight: normal;
     font-size: 15px;
-    padding-top: 18px;
-    padding-left: 18px;
-    padding-right: 20px;
+    padding: 18px;
     cursor: pointer;
   }
   @media only screen and (max-width: 800px){

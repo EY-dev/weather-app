@@ -47,12 +47,14 @@ export default {
 body{
   background-color: #498CEC;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   box-sizing: border-box!important;
   margin: 0;
   padding: 0;
 }
 #app {
+  height: 100vh;
+  min-height: 500px;
   font-family: 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -62,6 +64,9 @@ body{
 @media only screen and (max-width: 800px){
   body{
     background-color: #7290B9;
+  }
+  #app {
+    min-height: 430px;
   }
 }
 @media only screen and (max-height: 725px) and (min-width: 401px){

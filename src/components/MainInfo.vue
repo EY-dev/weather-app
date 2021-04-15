@@ -1,15 +1,17 @@
 <template>
-  <div class="main-info">
-    <div class="main-info_title">
-      <div class="weather-ico">
-        <img :src="icoSource" alt="">
+  <div class="main-block">
+    <div class="main-info">
+      <div class="main-info_title">
+        <div class="weather-ico">
+          <img :src="icoSource" alt="">
+        </div>
+        <div class="weather-value">
+          {{ weatherValue }} º
+        </div>
       </div>
-      <div class="weather-value">
-        {{ weatherValue }} º
+      <div class="main-info_subtitle">
+        {{ description }}
       </div>
-    </div>
-    <div class="main-info_subtitle">
-      {{ description }}
     </div>
   </div>
 </template>
@@ -40,16 +42,25 @@ export default {
 </script>
 
 <style scoped>
+.main-block{
+  display: block;
+  position: relative;
+  width: 100%;
+  height: calc(100% - 241px);
+}
 .main-info{
-  position: absolute;
-  left:50%;
-  top:50%;
-  transform: translate(-50%, -50%);
+  min-height: 246px;
+  margin: auto;
   color: #FFFFFF;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
 }
 .main-info_title{
-  min-width: 516px;
+  width: 516px;
   display: flex;
+  margin: auto;
 }
 .weather-ico img{
     width: 200px;
@@ -73,7 +84,13 @@ export default {
   color: #FFFFFF;
 }
 @media only screen and (max-width: 800px){
-
+  .main-block{
+    height: calc(100% - 320px);
+    min-height: 130px;
+  }
+  .main-info{
+    min-height: 130px;
+  }
   .weather-ico img{
     width: 100px;
     height: 100px;
@@ -93,6 +110,7 @@ export default {
     color: #FFFFFF;
   }
   .main-info_title{
+    width: 260px;
     min-width: 260px;
     display: flex;
   }

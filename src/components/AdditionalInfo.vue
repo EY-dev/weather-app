@@ -1,22 +1,25 @@
 <template>
-  <div class="additional-info">
-    <div class="additional-info_row">
-      <div class="additional-info_row_item">
-        <info-element title="Ветер" :value="windValue"/>
+  <div class="additional-info-box">
+    <div class="additional-info">
+      <div class="additional-info_row">
+        <div class="additional-info_row_item">
+          <info-element title="Ветер" :value="windValue"/>
+        </div>
+        <div class="additional-info_row_item">
+          <info-element title="Давление" :value="pressureValue"/>
+        </div>
       </div>
-      <div class="additional-info_row_item">
-        <info-element title="Давление" :value="pressureValue"/>
-      </div>
-    </div>
-    <div class="additional-info_row">
-      <div class="additional-info_row_item">
-        <info-element title="Влажность" :value="humidityValue"/>
-      </div>
-      <div class="additional-info_row_item">
-        <info-element title="Вероятность дождя" value="нет данных"/>
+      <div class="additional-info_row">
+        <div class="additional-info_row_item">
+          <info-element title="Влажность" :value="humidityValue"/>
+        </div>
+        <div class="additional-info_row_item">
+          <info-element title="Вероятность дождя" value="нет данных"/>
+        </div>
       </div>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -65,11 +68,10 @@ export default {
 </script>
 
 <style scoped>
+.additional-info-box{
+  height: 75px;
+}
 .additional-info{
-  position: absolute;
-  top: calc(100% - 50px);
-  left: 0;
-  transform: translate(0, -100%);
   display: inline-flex;
   width: 100%;
   box-sizing: border-box;
@@ -84,14 +86,20 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: auto auto 35px;
+  margin: auto;
 }
 @media only screen and (max-width: 800px){
+  .additional-info-box{
+    height: 115px;
+  }
   .additional-info{
     display: block;
   }
   .additional-info_row{
     width: 100%;
+  }
+  .additional-info_row:first-child {
+    margin-bottom: 35px;
   }
   .additional-info_row_item{
     display: flex;
