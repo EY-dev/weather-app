@@ -6,7 +6,7 @@
           <img :src="icoSource" alt="">
         </div>
         <div class="weather-value">
-          {{ weatherValue }} º
+          {{ weatherValue }}º
         </div>
       </div>
       <div class="main-info_subtitle">

@@ -14,6 +14,9 @@ export default{
                 speed: 0,
                 deg : 0
             },
+            rain : {
+              '1h' : 0
+            },
             weather : [{
                     description: "небольшая облачность",
                     icon: "02d",

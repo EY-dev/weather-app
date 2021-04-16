@@ -14,7 +14,7 @@
           <info-element title="Влажность" :value="humidityValue"/>
         </div>
         <div class="additional-info_row_item">
-          <info-element title="Вероятность дождя" value="нет данных"/>
+          <info-element title="Вероятность дождя" :value="rainPercentage"/>
         </div>
       </div>
     </div>
@@ -62,6 +62,9 @@ export default {
     },
     humidityValue(){
       return parseInt(this.$store.getters.getWeather.main.humidity) + ' %';
+    },
+    rainPercentage(){
+      return parseInt(this.$store.getters.getWeather.rain['1h'] * 100) + ' %'
     }
   }
 }
@@ -99,7 +102,7 @@ export default {
     width: 100%;
   }
   .additional-info_row:first-child {
-    margin-bottom: 35px;
+
   }
   .additional-info_row_item{
     display: flex;

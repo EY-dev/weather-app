@@ -20,6 +20,7 @@ export default {
   .info-block{
     color: #FFFFFF;
     font-family: Lato,sans-serif;
+    min-height: 90px;
   }
   .info-block_info-title{
     font-family: Lato,sans-serif;
