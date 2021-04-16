@@ -98,6 +98,16 @@ export default{
                 state.dispatch('setURL', url);
             }).catch(error => {console.log(error.response.data.message)});
         },
+        runSchedule : (state, time) => {
+            if (time > 0) {
+                state.dispatch('getWeather', state.state.url);
+                const pr = new Promise((resolve) => {
+                    setTimeout(() => {resolve()}, time);
+                });
+                pr.then(() => {state.dispatch('runSchedule', time);})
+            }
+        },
+
         setCity : (state, value) => {
             state.commit('SET_CITY', value);
         },

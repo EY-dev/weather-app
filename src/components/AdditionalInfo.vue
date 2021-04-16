@@ -64,7 +64,7 @@ export default {
       return parseInt(this.$store.getters.getWeather.main.humidity) + ' %';
     },
     rainPercentage(){
-      return parseInt(this.$store.getters.getWeather.rain['1h'] * 100) + ' %'
+      return (this.$store.getters.getWeather.rain) ? parseInt(this.$store.getters.getWeather.rain['1h'] * 100) + ' %' : '0%'
     }
   }
 }

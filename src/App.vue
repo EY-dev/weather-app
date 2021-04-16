@@ -25,7 +25,9 @@ export default {
       });
     }
     this.$store.dispatch('initDevice', null);
-    this.$store.dispatch('getWeather');
+  },
+  mounted() {
+    this.$store.dispatch('runSchedule', 600000);
   },
   methods:{
     async accept() {
