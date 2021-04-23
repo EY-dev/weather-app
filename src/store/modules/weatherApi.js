@@ -110,7 +110,6 @@ export default{
 
         setCity : (state, value) => {
             state.commit('SET_CITY', value);
-            console.log('Test')
         },
         setURL : (state, value) => {
             state.commit('SET_URL', value);
